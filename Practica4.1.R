@@ -13,3 +13,10 @@ rnorm(10)
 
 set.seed(2)
 
+#test de shapiro, shapiro.test(), contraste de hipotesis, para ver si es verdad que tiene forma de gaus.
+
+y <- rnorm(1354)
+shapiro.test(y)
+
+tinytex::install_tinytex()
+library(tinytex)
