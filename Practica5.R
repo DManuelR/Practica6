@@ -19,5 +19,10 @@ boxplot(y1, y2)
 # Las pruebas paramétricas y no paramétricas son diferentes en cuanto a las suposiciones que hacen sobre la distribución de los datos y en cuanto a los tipos de datos que pueden analizar.
 
 
+#10- Se suele aplicar la correlación de rangos de Spearman. Con un par de vectores, por ejemplo, utilizamos cor.test(x, y, method = "spearman").
+
+
+
+
 
 
