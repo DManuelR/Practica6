@@ -13,3 +13,11 @@ t.test(y1)
 t.test(y2)
 
 boxplot(y1, y2)
+
+
+#2- Decimos que la correlación lineal es una prueba de correlación paramétrica porque asume que las variables involucradas en el análisis siguen una distribución normal y que la relación entre ellas es lineal.
+# Las pruebas paramétricas y no paramétricas son diferentes en cuanto a las suposiciones que hacen sobre la distribución de los datos y en cuanto a los tipos de datos que pueden analizar.
+
+
+
+
