@@ -8,7 +8,6 @@ y2 <- 5*z+x*12+rnorm(100,2,1)
 hist(y1)
 hist(y2)
 
-#nos interesa que no sean iguales a 0.
 t.test(y1)
 t.test(y2)
 
@@ -49,10 +48,14 @@ corrplot(matriz_correlacion2, method = "circle")
 #8-
 distancia <- c(1.1,100.2,90.3,5.4,57.5,6.6,34.7,65.8,57.9,86.1)
 n_piezas <- c(110,2,6,98,40,94,31,5,8,10)
-cor(distancia, n_piezas)
+data2 <- data.frame(distancia, n_piezas)
+cor(data2)
 cor.test(distancia, n_piezas)
-cor.test(distancia, n_piezas)$conf.int
+correlation::correlation(data2)
 #Tienen una relación lineal negativa, es decir, cuando una variable aumenta, la otra tiende a disminuir.
+#Esta relación es significativamente diferente a 0.
+#En el caso de un tamaño muestral pequeño, como en este ejemplo de n=10, hay una mayor posibilidad de que la correlación observada sea una coincidencia. se recomienda tener un tamaño muestral mínimo de 30.
+
 
 #9- Una relación lineal se refiere a una relación entre dos variables que se puede representar por una línea recta. Por otro lado, una relación monótona se refiere a una relación entre dos variables que sigue un patrón creciente o decreciente, pero no necesariamente lineal.
 # Generar datos para una relación lineal
