@@ -18,6 +18,41 @@ boxplot(y1, y2)
 #2- Decimos que la correlación lineal es una prueba de correlación paramétrica porque asume que las variables involucradas en el análisis siguen una distribución normal y que la relación entre ellas es lineal.
 # Las pruebas paramétricas y no paramétricas son diferentes en cuanto a las suposiciones que hacen sobre la distribución de los datos y en cuanto a los tipos de datos que pueden analizar.
 
+#3- Las variables más asociadas son la longitud con el peso, los tres asteriscos indican que es más significativa la correlación.
+install.packages("correlation")
+library(correlation)
+resultados <- correlation(data)
+resultados
+
+#4- Vemos más detalladamente la correlación entre las variables, gracias al color y los números que nos muestra.
+install.packages("GGally")
+library(GGally)
+matriz_correlacion2 <- cor(data)
+pval_matrix <- cor.mtest(data)$p
+ggcorr(matriz_correlacion2, p.mat = pval_matrix, label = TRUE, label_round = 2)
+
+#5- 
+library(psych)
+matriz_correlacion <- corr.test(data)
+print(matriz_correlacion)
+
+#6-
+ggplot(data, aes(x = longitud, y = peso)) + 
+  geom_point() +
+  geom_smooth(method = "lm", se = FALSE)
+
+#7-
+library(corrplot)
+matriz_correlacion2 <- cor(data)
+corrplot(matriz_correlacion2, method = "circle")
+
+#8-
+distancia <- c(1.1,100.2,90.3,5.4,57.5,6.6,34.7,65.8,57.9,86.1)
+n_piezas <- c(110,2,6,98,40,94,31,5,8,10)
+cor(distancia, n_piezas)
+cor.test(distancia, n_piezas)
+cor.test(distancia, n_piezas)$conf.int
+#Tienen una relación lineal negativa, es decir, cuando una variable aumenta, la otra tiende a disminuir.
 
 #9- Una relación lineal se refiere a una relación entre dos variables que se puede representar por una línea recta. Por otro lado, una relación monótona se refiere a una relación entre dos variables que sigue un patrón creciente o decreciente, pero no necesariamente lineal.
 # Generar datos para una relación lineal
