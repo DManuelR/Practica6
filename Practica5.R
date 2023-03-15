@@ -80,6 +80,6 @@ plot(horas_de_estudio, promedio_de_calificacion, main = "Relación monótona")
 
 
 
-
+library(tinytex)
 
 
