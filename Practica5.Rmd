@@ -3,8 +3,8 @@ title: "Practica5"
 author: "David M. Villalobo"
 date: "2023-03-14"
 output:
-  html_document: default
   pdf_document: default
+  html_document: default
 ---
 
 ```{r setup, include=FALSE}
@@ -13,7 +13,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ## Ej 1
 
-Aplicamos un contraste de hipótesis
+Aplicamos un contraste de hipótesis basado en la media. Primero le damos valores aleatorios a y1 e y2, creamos histogramas de ambos, utilizamos la función t.test() y utilizamos boxplot() para comparar.
 
 ```{r}
 set.seed(1)
@@ -44,6 +44,8 @@ library(correlation)
 resultados <- correlation(data)
 resultados
 ```
+
+
 ## Ej 4
 Vemos más detalladamente la correlación entre las variables, gracias al color y los números que nos muestra.
 
@@ -55,19 +57,24 @@ ggcorr(matriz_correlacion2, p.mat = pval_matrix, label = TRUE, label_round = 2)
 ```
 
 ## Ej 5
+Utilizamos la función correlatios paraobtener una matriz de correlación lineal, IC 95% y p-value de todas las variables en el data frame ‘data’.
 
 ```{r}
 library(psych)
 correlation::correlation(data)
 ```
 ## Ej 6
+Para visualizar gráficamente la correlación lineal existente entre las variables ‘longitud’ y
+‘peso’ utilizo ggplot() dentro del cual indicamos el dataframe que utilizamos, asignamos los valores correspondientes a x e y, y utilizamos la función geom_smooth().
 
 ```{r}
+library(ggplot2)
 ggplot(data, aes(x = longitud, y = peso)) + 
   geom_point() +
   geom_smooth(method = "lm", se = FALSE)
 ```
 ##Ej 7
+Para visualizar la correlación entre variables utilizo la función corrplot().
 
 ```{r}
 library(corrplot)
@@ -77,7 +84,7 @@ corrplot(matriz_correlacion2, method = "circle")
 ## Ej 8
 Tienen una relación lineal negativa, es decir, cuando una variable aumenta, la otra tiende a disminuir.
 Esta relación es significativamente diferente a 0.
-En el caso de un tamaño muestral pequeño, como en este ejemplo de n=10, hay una mayor posibilidad de que la correlación observada sea una coincidencia. se recomienda tener un tamaño muestral mínimo de 30.
+En el caso de un tamaño muestral pequeño, como en este ejemplo de n=10, hay una mayor posibilidad de que la correlación observada sea una coincidencia. Se recomienda tener un tamaño muestral mínimo de 30.
 
 ```{r}
 distancia <- c(1.1,100.2,90.3,5.4,57.5,6.6,34.7,65.8,57.9,86.1)
@@ -88,9 +95,37 @@ cor.test(distancia, n_piezas)
 correlation::correlation(data2)
 ```
 ## Ej 9
-Una relación lineal se refiere a una relación entre dos variables que se puede representar por una línea recta. Por otro lado, una relación monótona se refiere a una relación entre dos variables que sigue un patrón creciente o decreciente, pero no necesariamente lineal.
+Una relación lineal se refiere a una relación entre dos variables que se puede representar por una línea recta. Por otro lado, una relación monótona se refiere a una relación entre dos variables que sigue un patrón creciente o decreciente, pero no necesariamente lineal. 
+
+El primer gráfico muestra la relación lineal entre las dos variables. Podemos ver que la nube de puntos sigue una línea recta, lo que indica una relación lineal positiva entre las variables. En cambio, el segundo gráfico muestra la relación monótona entre las dos variables. Podemos ver que la nube de puntos no sigue una línea recta, pero sí sigue un patrón creciente general.
+
+```{r}
+set.seed(123)
+horas_de_estudio <- rnorm(100, mean = 20, sd = 5)
+promedio_de_calificacion <- horas_de_estudio * 0.5 + rnorm(100, mean = 70, sd = 10)
+par(mfrow=c(1,2))
+plot(horas_de_estudio, promedio_de_calificacion, main = "Relación lineal")
+
+set.seed(123)
+horas_de_estudio <- rnorm(100, mean = 20, sd = 5)
+promedio_de_calificacion <- 100 - 1 / (horas_de_estudio + 1) + rnorm(100, mean = 0, sd = 5)
+par(mfrow=c(1,2))
+plot(horas_de_estudio, promedio_de_calificacion, main = "Relación monótona")
+
+```
+
 
 
 ## Ej 10
-Se suele aplicar la correlación de rangos de Spearman. Con un par de vectores, por ejemplo, utilizamos cor.test(x, y, method = "spearman").
+Se suele aplicar la correlación de rangos de Spearman. Con un par de vectores que experimentan una
+relación monótona, por ejemplo, utilizamos cor.test(x, y, method = "spearman").
+
+```{r}
+horas_de_estudio <- rnorm(100, mean = 20, sd = 5)
+promedio_de_calificacion <- 100 - 1 / (horas_de_estudio + 1) + rnorm(100, mean = 0, sd = 5)
+par(mfrow=c(1,2))
+cor.test(horas_de_estudio, promedio_de_calificacion, method = "spearman")
+
+```
+
 
