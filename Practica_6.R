@@ -47,5 +47,33 @@ rownames(tabla_datos2)[11] <- "sumatorio"
 rownames(tabla_datos2)[11]
 tabla_datos2
 
+modelo <- lm(y_cuentas ~ x_distancia, data = tabla_datos)
+coeficientes <- coef(modelo)
+coeficientes
+
+plot(y_cuentas ~ x_distancia, main = "gráfico de dispersión la recta de regresión", ylab = "Cuentas", xlab = "Distancia")
+abline(modelo)
+
+res_estandarizados <- rstandard(modelo)
+res_estandarizados
+residuos <- resid(modelo)
+residuos
+res_estunderizados <- rstudent(modelo)
+res_estunderizados
+
+y_6_6 <- 95.36 - 1.0872 * 6.6
+y_6_6
+
+
+library(dplyr)
+train <- data %>% dplyr::sample_frac(.8)
+test <- dplyr::anti_join(data, train)
+train
+test
+
+modelo_2 <- lm(y_cuentas ~ x_distancia, train)
+summary(modelo_2)
+
+#17, los tres asteriscos significan... 0.8641 cuanto más cerca del 1 mejor, porcentaje de...
 
 
