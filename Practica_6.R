@@ -76,4 +76,7 @@ summary(modelo_2)
 
 #17, los tres asteriscos significan... 0.8641 cuanto más cerca del 1 mejor, porcentaje de...
 
+#18, los grados de libertad del modelo se han obtenido mediante la función summary.
+
+anova(modelo)
 
