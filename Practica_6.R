@@ -81,5 +81,13 @@ summary(modelo_2)
 anova(modelo)
 #19, el total de varianza explicada y no explicada por el modelo se encuentra con la función anova(), la cual aporta una tabla donde la columna Sum Sq nos proporciona la varianza total explicada y no explicada.
 
+Predicci <- predict(modelo_2, newdata = test) 
+Predicci
 
+E_cadr_medio <- sqrt(mean((test$y_cuentas - Predicci)^2))
+E_cadr_medio
 
+#Para comprobar si existen valores influyentes en nuestro modelo podemos usar el método de Cook, que mide la influencia de una observación en el ajuste del modelo, eliminando la observación y comparando el ajuste del modelo con y sin ella. Si el ajuste del modelo cambia significativamente, entonces la observación se considera influyente.
+
+plot(modelo, which = 1)
+#observamos que uno de los puntos descarrila
