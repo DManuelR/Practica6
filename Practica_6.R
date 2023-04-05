@@ -79,4 +79,7 @@ summary(modelo_2)
 #18, los grados de libertad del modelo se han obtenido mediante la función summary.
 
 anova(modelo)
+#19, el total de varianza explicada y no explicada por el modelo se encuentra con la función anova(), la cual aporta una tabla donde la columna Sum Sq nos proporciona la varianza total explicada y no explicada.
+
+
 
