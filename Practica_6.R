@@ -91,3 +91,17 @@ E_cadr_medio
 
 plot(modelo, which = 1)
 #observamos que uno de los puntos descarrila
+
+
+# cargar el paquete lmtest
+library(lmtest)
+
+# realizar el test de Durbin-Watson
+dwtest(modelo, alternative = "two.sided")
+#hay una fuerte autocorrelación positiva en los residuos del modelo, ya que el valor estadistico obtenido es menos de 1, por tanto no se puede asumir la independencia de los residuos
+
+plot(x = modelo$fitted.values, y = modelo$residuals,
+     xlab = "Valores ajustados", ylab = "Residuos",
+     main = "Gráfico de residuos versus valores ajustados")
+abline(h = 0, col = "red")
+#esto podría indicar que los errores del modelo no son constantes y que es necesario ajustar el modelo de manera diferente.
