@@ -1,0 +1,918 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+]{article}
+\usepackage{amsmath,amssymb}
+\usepackage{lmodern}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\usepackage[margin=1in]{geometry}
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.77,0.63,0.00}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{multirow}
+\usepackage{wrapfig}
+\usepackage{float}
+\usepackage{colortbl}
+\usepackage{pdflscape}
+\usepackage{tabu}
+\usepackage{threeparttable}
+\usepackage{threeparttablex}
+\usepackage[normalem]{ulem}
+\usepackage{makecell}
+\usepackage{xcolor}
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same} % disable monospaced font for URLs
+\hypersetup{
+  pdftitle={Practica6},
+  pdfauthor={David M. Villalobo},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\title{Practica6}
+\author{David M. Villalobo}
+\date{2023-04-09}
+
+\begin{document}
+\maketitle
+
+\hypertarget{ej-1}{%
+\subsection{Ej 1}\label{ej-1}}
+
+Cargamos las siguientes librerías: MASS, caret, stats, olsrr,
+kableExtra, knitrr, rmarkdown.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(MASS)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning: package 'MASS' was built under R version 4.2.3
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(caret)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning: package 'caret' was built under R version 4.2.3
+\end{verbatim}
+
+\begin{verbatim}
+## Loading required package: ggplot2
+\end{verbatim}
+
+\begin{verbatim}
+## Loading required package: lattice
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(stats)}
+\FunctionTok{library}\NormalTok{(olsrr)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning: package 'olsrr' was built under R version 4.2.3
+\end{verbatim}
+
+\begin{verbatim}
+## 
+## Attaching package: 'olsrr'
+\end{verbatim}
+
+\begin{verbatim}
+## The following object is masked from 'package:MASS':
+## 
+##     cement
+\end{verbatim}
+
+\begin{verbatim}
+## The following object is masked from 'package:datasets':
+## 
+##     rivers
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(kableExtra)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning: package 'kableExtra' was built under R version 4.2.3
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in !is.null(rmarkdown::metadata$output) && rmarkdown::metadata$output
+## %in% : 'length(x) = 2 > 1' in coercion to 'logical(1)'
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(knitr)}
+\FunctionTok{library}\NormalTok{(rmarkdown)}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{ej-2}{%
+\subsection{Ej 2}\label{ej-2}}
+
+Creamos 2 variables almacenadas como vector: ``y\_cuentas'' y
+``x\_distancia''.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{y\_cuentas }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\DecValTok{110}\NormalTok{,}\DecValTok{2}\NormalTok{,}\DecValTok{6}\NormalTok{,}\DecValTok{98}\NormalTok{,}\DecValTok{40}\NormalTok{,}\DecValTok{94}\NormalTok{,}\DecValTok{31}\NormalTok{,}\DecValTok{5}\NormalTok{,}\DecValTok{8}\NormalTok{,}\DecValTok{10}\NormalTok{)}
+\NormalTok{x\_distancia }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\FloatTok{1.1}\NormalTok{,}\FloatTok{100.2}\NormalTok{,}\FloatTok{90.3}\NormalTok{,}\FloatTok{5.4}\NormalTok{,}\FloatTok{57.5}\NormalTok{,}\FloatTok{6.6}\NormalTok{,}\FloatTok{34.7}\NormalTok{,}\FloatTok{65.8}\NormalTok{,}\FloatTok{57.9}\NormalTok{,}\FloatTok{86.1}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{ej-3}{%
+\subsection{Ej 3}\label{ej-3}}
+
+Verificamos el supuesto de linealidad de la variable explicativa
+incluyendo un contraste de hipótesis. Con plot() sabremos que presentan
+una correlación inversa (cuanto más lejos del 0, más cuentas aparecen).
+Con cor.test() vemos la posibilidad de que de que el valor que aparece
+como p-value (el cual informa sobre la correlación de las variables) no
+se de por azar por completo. Como el p-value es menor de 0.05 podemos
+decir que la correlación es fiable.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{plot}\NormalTok{(y\_cuentas, x\_distancia)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Practica6_files/figure-latex/unnamed-chunk-3-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{cor.test}\NormalTok{(y\_cuentas, x\_distancia)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+##  Pearson's product-moment correlation
+## 
+## data:  y_cuentas and x_distancia
+## t = -6.8847, df = 8, p-value = 0.0001265
+## alternative hypothesis: true correlation is not equal to 0
+## 95 percent confidence interval:
+##  -0.9824414 -0.7072588
+## sample estimates:
+##        cor 
+## -0.9249824
+\end{verbatim}
+
+\hypertarget{ej-4}{%
+\subsection{Ej 4}\label{ej-4}}
+
+X es la variable explicativa, no tiene forma de campana, por lo que no
+es normal, la regresión no se cumple siempre. Con 10 variables, tenemos
+pocos datos, el shapiro.test no es fiable, da una conclusión no valida,
+ya que da como resultado que es normal (p-value mayor de 0.05) y eso es
+falso.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{hist}\NormalTok{(x\_distancia, }\AttributeTok{probability =} \ConstantTok{TRUE}\NormalTok{)}
+\FunctionTok{lines}\NormalTok{(}\FunctionTok{density}\NormalTok{(x\_distancia))}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Practica6_files/figure-latex/unnamed-chunk-4-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{shapiro.test}\NormalTok{(x\_distancia)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+##  Shapiro-Wilk normality test
+## 
+## data:  x_distancia
+## W = 0.90687, p-value = 0.2602
+\end{verbatim}
+
+\hypertarget{ej-5}{%
+\subsection{Ej 5}\label{ej-5}}
+
+Multiplicamos las variables con * y lo nombramos xy.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{xy }\OtherTok{\textless{}{-}}\NormalTok{ y\_cuentas}\SpecialCharTok{*}\NormalTok{x\_distancia}
+\NormalTok{xy}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##  [1]  121.0  200.4  541.8  529.2 2300.0  620.4 1075.7  329.0  463.2  861.0
+\end{verbatim}
+
+\hypertarget{ej-6}{%
+\subsection{Ej 6}\label{ej-6}}
+
+Elevamos al cuadrado la variable x, y le otorgamos el nombre
+x\_cuadrado.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x\_cuadrado }\OtherTok{\textless{}{-}}\NormalTok{ x\_distancia}\SpecialCharTok{\^{}}\DecValTok{2}
+\NormalTok{x\_cuadrado}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##  [1]     1.21 10040.04  8154.09    29.16  3306.25    43.56  1204.09  4329.64
+##  [9]  3352.41  7413.21
+\end{verbatim}
+
+\hypertarget{ej-7}{%
+\subsection{Ej 7}\label{ej-7}}
+
+Creamos un dataframe llamado tabla\_datos con las variables creadas
+hasta ahora.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{tabla\_datos }\OtherTok{\textless{}{-}} \FunctionTok{data.frame}\NormalTok{(y\_cuentas, x\_distancia, xy, x\_cuadrado)}
+\NormalTok{tabla\_datos}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##    y_cuentas x_distancia     xy x_cuadrado
+## 1        110         1.1  121.0       1.21
+## 2          2       100.2  200.4   10040.04
+## 3          6        90.3  541.8    8154.09
+## 4         98         5.4  529.2      29.16
+## 5         40        57.5 2300.0    3306.25
+## 6         94         6.6  620.4      43.56
+## 7         31        34.7 1075.7    1204.09
+## 8          5        65.8  329.0    4329.64
+## 9          8        57.9  463.2    3352.41
+## 10        10        86.1  861.0    7413.21
+\end{verbatim}
+
+\hypertarget{ej-8}{%
+\subsection{Ej 8}\label{ej-8}}
+
+Visualizamos el dataframe anteriormente creado como una tabla, gracias a
+la librería kableExtra, primero esterilizamos el dataframe y luego la
+ejecutamos.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{kbl}\NormalTok{(tabla\_datos)}\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{kable\_minimal}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{table}
+\centering
+\begin{tabular}[t]{r|r|r|r}
+\hline
+y\_cuentas & x\_distancia & xy & x\_cuadrado\\
+\hline
+110 & 1.1 & 121.0 & 1.21\\
+\hline
+2 & 100.2 & 200.4 & 10040.04\\
+\hline
+6 & 90.3 & 541.8 & 8154.09\\
+\hline
+98 & 5.4 & 529.2 & 29.16\\
+\hline
+40 & 57.5 & 2300.0 & 3306.25\\
+\hline
+94 & 6.6 & 620.4 & 43.56\\
+\hline
+31 & 34.7 & 1075.7 & 1204.09\\
+\hline
+5 & 65.8 & 329.0 & 4329.64\\
+\hline
+8 & 57.9 & 463.2 & 3352.41\\
+\hline
+10 & 86.1 & 861.0 & 7413.21\\
+\hline
+\end{tabular}
+\end{table}
+
+\hypertarget{ej-9}{%
+\subsection{Ej 9}\label{ej-9}}
+
+Realizamos el sumatorio de los valores almacenados en cada una de las 4
+columnas. Para ello utilizamos la función sum más el simbolo \$ para
+especificar los valores de que columna queremos sumar.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{sum\_y }\OtherTok{\textless{}{-}} \FunctionTok{sum}\NormalTok{(tabla\_datos}\SpecialCharTok{$}\NormalTok{y\_cuentas)}
+\NormalTok{sum\_y}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 404
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{sum\_x }\OtherTok{\textless{}{-}} \FunctionTok{sum}\NormalTok{(tabla\_datos}\SpecialCharTok{$}\NormalTok{x\_distancia)}
+\NormalTok{sum\_x}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 505.6
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{sum\_xy }\OtherTok{\textless{}{-}} \FunctionTok{sum}\NormalTok{(tabla\_datos}\SpecialCharTok{$}\NormalTok{xy)}
+\NormalTok{sum\_xy}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 7041.7
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{sum\_xcuadrado }\OtherTok{\textless{}{-}} \FunctionTok{sum}\NormalTok{(tabla\_datos}\SpecialCharTok{$}\NormalTok{x\_cuadrado)}
+\NormalTok{sum\_xcuadrado}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 37873.66
+\end{verbatim}
+
+\hypertarget{ej-10}{%
+\subsection{Ej 10}\label{ej-10}}
+
+Creamos un vector con los resultados de los sumatorios anteriores, para
+añadirlos a un dataframe ya existente con rbind(). Le damos un nombre
+diferente al dataframe para crear uno nuevo sin eliminar el original.
+Con rownames() indicamos que contiene la nueva fila añadida.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{sum\_total }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(sum\_y, sum\_x, sum\_xy, sum\_xcuadrado)}
+\NormalTok{sum\_total}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1]   404.00   505.60  7041.70 37873.66
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{tabla\_datos2 }\OtherTok{\textless{}{-}} \FunctionTok{rbind}\NormalTok{(tabla\_datos, sum\_total)}
+\NormalTok{tabla\_datos2}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##    y_cuentas x_distancia     xy x_cuadrado
+## 1        110         1.1  121.0       1.21
+## 2          2       100.2  200.4   10040.04
+## 3          6        90.3  541.8    8154.09
+## 4         98         5.4  529.2      29.16
+## 5         40        57.5 2300.0    3306.25
+## 6         94         6.6  620.4      43.56
+## 7         31        34.7 1075.7    1204.09
+## 8          5        65.8  329.0    4329.64
+## 9          8        57.9  463.2    3352.41
+## 10        10        86.1  861.0    7413.21
+## 11       404       505.6 7041.7   37873.66
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{rownames}\NormalTok{(tabla\_datos2)[}\DecValTok{11}\NormalTok{] }\OtherTok{\textless{}{-}} \StringTok{"sumatorio"}
+\FunctionTok{rownames}\NormalTok{(tabla\_datos2)[}\DecValTok{11}\NormalTok{]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "sumatorio"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{tabla\_datos2}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##           y_cuentas x_distancia     xy x_cuadrado
+## 1               110         1.1  121.0       1.21
+## 2                 2       100.2  200.4   10040.04
+## 3                 6        90.3  541.8    8154.09
+## 4                98         5.4  529.2      29.16
+## 5                40        57.5 2300.0    3306.25
+## 6                94         6.6  620.4      43.56
+## 7                31        34.7 1075.7    1204.09
+## 8                 5        65.8  329.0    4329.64
+## 9                 8        57.9  463.2    3352.41
+## 10               10        86.1  861.0    7413.21
+## sumatorio       404       505.6 7041.7   37873.66
+\end{verbatim}
+
+\hypertarget{ej-11}{%
+\subsection{Ej 11}\label{ej-11}}
+
+Utilizamos lm() para calcular los datos que necesitemos para obtener la
+recta de regresión. Con summary() obtenemos los datos necesarios para la
+recta de regresión. Los datos principales serían 95.37 y -1.087. En la
+ecuación quedaría así:
+
+\[B_0 -> y - B_1 · x_1 + Σ_1\] \[Y_0 = 95.37 - 1.087 · x_1 + Σ_1\]
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{modelo }\OtherTok{\textless{}{-}} \FunctionTok{lm}\NormalTok{(y\_cuentas }\SpecialCharTok{\textasciitilde{}}\NormalTok{ x\_distancia, }\AttributeTok{data =}\NormalTok{ tabla\_datos)}
+\FunctionTok{summary}\NormalTok{(modelo)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Call:
+## lm(formula = y_cuentas ~ x_distancia, data = tabla_datos)
+## 
+## Residuals:
+##     Min      1Q  Median      3Q     Max 
+## -26.644 -12.672   7.693   8.730  15.825 
+## 
+## Coefficients:
+##             Estimate Std. Error t value Pr(>|t|)    
+## (Intercept)  95.3710     9.7188   9.813 9.77e-06 ***
+## x_distancia  -1.0872     0.1579  -6.885 0.000126 ***
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## Residual standard error: 17.52 on 8 degrees of freedom
+## Multiple R-squared:  0.8556, Adjusted R-squared:  0.8375 
+## F-statistic:  47.4 on 1 and 8 DF,  p-value: 0.0001265
+\end{verbatim}
+
+\hypertarget{ej-12}{%
+\subsection{Ej 12}\label{ej-12}}
+
+Creamos una nube de puntos con plot() y añadimos la recta de regresión
+con abline().
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{plot}\NormalTok{(y\_cuentas }\SpecialCharTok{\textasciitilde{}}\NormalTok{ x\_distancia, }\AttributeTok{main =} \StringTok{"gráfico de dispersión la recta de regresión"}\NormalTok{, }\AttributeTok{ylab =} \StringTok{"Cuentas"}\NormalTok{, }\AttributeTok{xlab =} \StringTok{"Distancia"}\NormalTok{)}
+\FunctionTok{abline}\NormalTok{(modelo)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Practica6_files/figure-latex/unnamed-chunk-12-1.pdf}
+\#\# Ej 13
+
+Los residuos de un modelo se refieren a las diferencias entre los
+valores observados y los valores predichos por el modelo. Los residuos
+son una medida de la discrepancia entre los datos observados y los
+valores ajustados del modelo y se utilizan para evaluar la calidad del
+ajuste del modelo. Si los residuos son grandes, esto puede indicar que
+el modelo no se ajusta bien a los datos y que se necesitan ajustes en el
+modelo o en los datos. Primero calculamos los residuos estandarizados
+con rstandard, después los residuos con resid, y finalmente los
+estunderizados con rstudent. Todo utilizando el modelo creado en el
+ejercicio 11.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{res\_estandarizados }\OtherTok{\textless{}{-}} \FunctionTok{rstandard}\NormalTok{(modelo)}
+\NormalTok{res\_estandarizados}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##          1          2          3          4          5          6          7 
+##  1.0784816  1.0622593  0.5721649  0.5661008  0.4307982  0.3843280 -1.6213545 
+##          8          9         10 
+## -1.1448722 -1.4726329  0.5266739
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{residuos }\OtherTok{\textless{}{-}} \FunctionTok{resid}\NormalTok{(modelo)}
+\NormalTok{residuos}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##          1          2          3          4          5          6          7 
+##  15.824925  15.570779   8.807066   8.500073   7.145471   5.804766 -26.643686 
+##          8          9         10 
+## -18.830406 -24.419631   8.240642
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{res\_estunderizados }\OtherTok{\textless{}{-}} \FunctionTok{rstudent}\NormalTok{(modelo)}
+\NormalTok{res\_estunderizados}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##          1          2          3          4          5          6          7 
+##  1.0912716  1.0721374  0.5465101  0.5404749  0.4077319  0.3628715 -1.8509341 
+##          8          9         10 
+## -1.1711614 -1.6134626  0.5014281
+\end{verbatim}
+
+\hypertarget{ej-14}{%
+\subsection{Ej 14}\label{ej-14}}
+
+Sustituimos el valor de x que queremos calcular en la recta de
+regresión.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{y\_6\_6 }\OtherTok{\textless{}{-}} \FloatTok{95.37} \SpecialCharTok{{-}} \FloatTok{1.087} \SpecialCharTok{*} \FloatTok{6.6}
+\NormalTok{y\_6\_6}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 88.1958
+\end{verbatim}
+
+\hypertarget{ej-15}{%
+\subsection{Ej 15}\label{ej-15}}
+
+Utilizamos la librería dplyr. Los dos conjuntos de datos creados sirven,
+el primero para crear una recta de regresión y el segundo para comprobar
+su validez.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(dplyr)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Attaching package: 'dplyr'
+\end{verbatim}
+
+\begin{verbatim}
+## The following object is masked from 'package:kableExtra':
+## 
+##     group_rows
+\end{verbatim}
+
+\begin{verbatim}
+## The following object is masked from 'package:MASS':
+## 
+##     select
+\end{verbatim}
+
+\begin{verbatim}
+## The following objects are masked from 'package:stats':
+## 
+##     filter, lag
+\end{verbatim}
+
+\begin{verbatim}
+## The following objects are masked from 'package:base':
+## 
+##     intersect, setdiff, setequal, union
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{data }\OtherTok{\textless{}{-}} \FunctionTok{data.frame}\NormalTok{(x\_distancia, y\_cuentas)}
+\NormalTok{train }\OtherTok{\textless{}{-}}\NormalTok{ data }\SpecialCharTok{\%\textgreater{}\%}\NormalTok{ dplyr}\SpecialCharTok{::}\FunctionTok{sample\_frac}\NormalTok{(.}\DecValTok{8}\NormalTok{)}
+\NormalTok{test }\OtherTok{\textless{}{-}}\NormalTok{ dplyr}\SpecialCharTok{::}\FunctionTok{anti\_join}\NormalTok{(data, train)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Joining with `by = join_by(x_distancia, y_cuentas)`
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{train}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##   x_distancia y_cuentas
+## 1         6.6        94
+## 2        65.8         5
+## 3        34.7        31
+## 4         1.1       110
+## 5        86.1        10
+## 6       100.2         2
+## 7         5.4        98
+## 8        90.3         6
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{test}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##   x_distancia y_cuentas
+## 1        57.5        40
+## 2        57.9         8
+\end{verbatim}
+
+\hypertarget{ej-16}{%
+\subsection{Ej 16}\label{ej-16}}
+
+Ajustamos nuevamente el modelo con el conjunto de ``entrenamiento''
+creado en el ejercicio anterior, ``train''.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{modelo\_2 }\OtherTok{\textless{}{-}} \FunctionTok{lm}\NormalTok{(y\_cuentas }\SpecialCharTok{\textasciitilde{}}\NormalTok{ x\_distancia, train)}
+\FunctionTok{summary}\NormalTok{(modelo\_2)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Call:
+## lm(formula = y_cuentas ~ x_distancia, data = train)
+## 
+## Residuals:
+##     Min      1Q  Median      3Q     Max 
+## -28.617  -2.153   5.845   8.368  14.294 
+## 
+## Coefficients:
+##             Estimate Std. Error t value Pr(>|t|)    
+## (Intercept)  96.8878     9.7183   9.970 5.89e-05 ***
+## x_distancia  -1.0741     0.1556  -6.904 0.000457 ***
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## Residual standard error: 17.17 on 6 degrees of freedom
+## Multiple R-squared:  0.8882, Adjusted R-squared:  0.8695 
+## F-statistic: 47.66 on 1 and 6 DF,  p-value: 0.0004565
+\end{verbatim}
+
+\hypertarget{ej-17}{%
+\subsection{Ej 17}\label{ej-17}}
+
+Los asteríscos nos indican la fiabilidad del modelo. Tres asteríscos
+indican una posibilidad baja de que la relación generada entre variables
+sea debida al azar.Cuantos menos asteríscos mayor posibilidad de que se
+deba al azar. Por otro lado R\^{}2 indica la relación entre los datos y
+la línea de regresión. Cuanto más se acerque R\^{}2 a 1 más se acercan
+los datos a la línea.
+
+\hypertarget{ej-18}{%
+\subsection{Ej 18}\label{ej-18}}
+
+El cálculo para los grados de libertad del modelo se ha obtenido
+mediante la función summary().
+
+\hypertarget{ej-19}{%
+\subsection{Ej 19}\label{ej-19}}
+
+El total de varianza explicada y no explicada por el modelo se encuentra
+con la función anova(), la cual aporta una tabla donde la columna `Sum
+Sq' nos proporciona la varianza total explicada y no explicada. Vemos
+que la Varianza explicada (10818.7) es baja en comparación a la no
+explicada por lo que no podemos pensar que el modelo sea bueno para
+realizar predicciones.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{anova}\NormalTok{(modelo\_2)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Analysis of Variance Table
+## 
+## Response: y_cuentas
+##             Df  Sum Sq Mean Sq F value    Pr(>F)    
+## x_distancia  1 14054.6 14054.6   47.66 0.0004565 ***
+## Residuals    6  1769.4   294.9                      
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+\end{verbatim}
+
+\hypertarget{ej-20}{%
+\subsection{Ej 20}\label{ej-20}}
+
+Utilizamos el error cuadrático medio. Es una operación de validación
+cruzada y ayuda a evaluar el rendimiento de un modelo de regresión
+lineal.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{Predicci }\OtherTok{\textless{}{-}} \FunctionTok{predict}\NormalTok{(modelo\_2, }\AttributeTok{newdata =}\NormalTok{ test) }
+\NormalTok{Predicci}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##        1        2 
+## 35.12873 34.69910
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{E\_cadr\_medio }\OtherTok{\textless{}{-}} \FunctionTok{sqrt}\NormalTok{(}\FunctionTok{mean}\NormalTok{((test}\SpecialCharTok{$}\NormalTok{y\_cuentas }\SpecialCharTok{{-}}\NormalTok{ Predicci)}\SpecialCharTok{\^{}}\DecValTok{2}\NormalTok{))}
+\NormalTok{E\_cadr\_medio}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 19.19077
+\end{verbatim}
+
+\hypertarget{ej-21}{%
+\subsection{Ej 21}\label{ej-21}}
+
+Para comprobar si existen valores influyentes en nuestro modelo podemos
+usar el método de Cook, que mide la influencia de una observación en el
+ajuste del modelo, eliminando la observación y comparando el ajuste del
+modelo con y sin ella. Si el ajuste del modelo cambia
+significativamente, entonces la observación se considera influyente.
+Observamos un valor que descarrila, por lo que podemos considerarlo
+influyente.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{plot}\NormalTok{(modelo, }\AttributeTok{which =} \DecValTok{1}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Practica6_files/figure-latex/unnamed-chunk-20-1.pdf}
+
+\hypertarget{ej-22}{%
+\subsection{Ej 22}\label{ej-22}}
+
+Primero cargamos lmtest y realizamos el test de Durbin-Watson. Hay una
+fuerte autocorrelación positiva en los residuos del modelo, ya que el
+valor estadístico obtenido es menos de 1, por tanto no se puede asumir
+la independencia de los residuos.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(lmtest)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Loading required package: zoo
+\end{verbatim}
+
+\begin{verbatim}
+## 
+## Attaching package: 'zoo'
+\end{verbatim}
+
+\begin{verbatim}
+## The following objects are masked from 'package:base':
+## 
+##     as.Date, as.Date.numeric
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{dwtest}\NormalTok{(modelo, }\AttributeTok{alternative =} \StringTok{"two.sided"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+##  Durbin-Watson test
+## 
+## data:  modelo
+## DW = 0.92072, p-value = 0.05819
+## alternative hypothesis: true autocorrelation is not 0
+\end{verbatim}
+
+\hypertarget{ej-23}{%
+\subsection{Ej 23}\label{ej-23}}
+
+El resultado podría indicar que los errores del modelo no son constantes
+y que es necesario ajustar el modelo de manera diferente.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{plot}\NormalTok{(}\AttributeTok{x =}\NormalTok{ modelo}\SpecialCharTok{$}\NormalTok{fitted.values, }\AttributeTok{y =}\NormalTok{ modelo}\SpecialCharTok{$}\NormalTok{residuals,}
+     \AttributeTok{xlab =} \StringTok{"Valores ajustados"}\NormalTok{, }\AttributeTok{ylab =} \StringTok{"Residuos"}\NormalTok{,}
+     \AttributeTok{main =} \StringTok{"Gráfico de residuos versus valores ajustados"}\NormalTok{)}
+\FunctionTok{abline}\NormalTok{(}\AttributeTok{h =} \DecValTok{0}\NormalTok{, }\AttributeTok{col =} \StringTok{"red"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Practica6_files/figure-latex/unnamed-chunk-22-1.pdf}
+
+\end{document}
