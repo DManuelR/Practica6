@@ -1,0 +1,228 @@
+---
+title: "Practica6"
+author: "David M. Villalobo"
+date: "2023-04-09"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Ej 1
+
+Cargamos las siguientes librerías: MASS, caret, stats, olsrr, kableExtra, knitrr, rmarkdown.
+
+```{r}
+library(MASS)
+library(caret)
+library(stats)
+library(olsrr)
+library(kableExtra)
+library(knitr)
+library(rmarkdown)
+```
+
+## Ej 2 
+
+Creamos 2 variables almacenadas como vector: “y_cuentas” y “x_distancia”.
+
+```{r}
+y_cuentas <- c(110,2,6,98,40,94,31,5,8,10)
+x_distancia <- c(1.1,100.2,90.3,5.4,57.5,6.6,34.7,65.8,57.9,86.1)
+```
+
+## Ej 3
+
+Verificamos el supuesto de linealidad de la variable explicativa incluyendo un
+contraste de hipótesis. Con plot() sabremos que presentan una correlación inversa (cuanto más lejos del 0, más cuentas aparecen). Con cor.test() vemos la posibilidad de que de que el valor que aparece como p-value (el cual informa sobre la correlación de las variables) no se de por azar por completo. Como el p-value es menor de 0.05 podemos decir que la correlación es fiable.
+
+```{r}
+plot(y_cuentas, x_distancia)
+cor.test(y_cuentas, x_distancia)
+```
+## Ej 4
+
+X es la variable explicativa, no tiene forma de campana, por lo que no es normal, la regresión no se cumple siempre. Con 10 variables, tenemos pocos datos, el shapiro.test no es fiable, da una conclusión no valida, ya que da como resultado que es normal (p-value mayor de 0.05) y eso es falso.
+
+```{r}
+hist(x_distancia, probability = TRUE)
+lines(density(x_distancia))
+shapiro.test(x_distancia)
+```
+## Ej 5
+
+Multiplicamos las variables con * y lo nombramos xy.
+
+```{r}
+xy <- y_cuentas*x_distancia
+xy
+```
+## Ej 6
+
+Elevamos al cuadrado la variable x, y le otorgamos el nombre x_cuadrado. 
+
+```{r}
+x_cuadrado <- x_distancia^2
+x_cuadrado
+```
+## Ej 7
+
+Creamos un dataframe llamado tabla_datos con las variables creadas hasta ahora.
+
+```{r}
+tabla_datos <- data.frame(y_cuentas, x_distancia, xy, x_cuadrado)
+tabla_datos
+```
+## Ej 8
+
+Visualizamos el dataframe anteriormente creado como una tabla, gracias a la librería kableExtra, primero esterilizamos el dataframe y luego la ejecutamos.
+
+```{r}
+kbl(tabla_datos)%>%
+  kable_minimal()
+```
+
+## Ej 9
+
+Realizamos el sumatorio de los valores almacenados en cada una de las 4 columnas. Para ello utilizamos la función sum más el simbolo $ para especificar los valores de que columna queremos sumar.
+
+```{r}
+sum_y <- sum(tabla_datos$y_cuentas)
+sum_y
+sum_x <- sum(tabla_datos$x_distancia)
+sum_x
+sum_xy <- sum(tabla_datos$xy)
+sum_xy
+sum_xcuadrado <- sum(tabla_datos$x_cuadrado)
+sum_xcuadrado
+```
+## Ej 10
+
+Creamos un vector con los resultados de los sumatorios anteriores, para añadirlos a un dataframe ya existente con rbind(). Le damos un nombre diferente al dataframe para crear uno nuevo sin eliminar el original. Con rownames() indicamos que contiene la nueva fila añadida.
+
+```{r}
+sum_total <- c(sum_y, sum_x, sum_xy, sum_xcuadrado)
+sum_total
+tabla_datos2 <- rbind(tabla_datos, sum_total)
+tabla_datos2
+rownames(tabla_datos2)[11] <- "sumatorio"
+rownames(tabla_datos2)[11]
+tabla_datos2
+```
+## Ej 11
+
+Utilizamos lm() para calcular los datos que necesitemos para obtener la recta de regresión. Con summary() obtenemos los datos necesarios para la recta de regresión. Los datos principales serían 95.37 y -1.087.
+En la ecuación quedaría así: 
+
+$$B_0 -> y - B_1 · x_1 + Σ_1$$
+$$Y_0 = 95.37 - 1.087 · x_1 + Σ_1$$
+```{r}
+modelo <- lm(y_cuentas ~ x_distancia, data = tabla_datos)
+summary(modelo)
+```
+## Ej 12
+
+Creamos una nube de puntos con plot() y añadimos la recta de regresión con abline().
+
+```{r}
+plot(y_cuentas ~ x_distancia, main = "gráfico de dispersión la recta de regresión", ylab = "Cuentas", xlab = "Distancia")
+abline(modelo)
+```
+## Ej 13
+
+Los residuos de un modelo se refieren a las diferencias entre los valores observados y los valores predichos por el modelo. Los residuos son una medida de la discrepancia entre los datos observados y los valores ajustados del modelo y se utilizan para evaluar la calidad del ajuste del modelo. Si los residuos son grandes, esto puede indicar que el modelo no se ajusta bien a los datos y que se necesitan ajustes en el modelo o en los datos. Primero calculamos los residuos estandarizados con rstandard, después los residuos con resid, y finalmente los estunderizados con rstudent. Todo utilizando el modelo creado en el ejercicio 11.
+
+```{r}
+res_estandarizados <- rstandard(modelo)
+res_estandarizados
+residuos <- resid(modelo)
+residuos
+res_estunderizados <- rstudent(modelo)
+res_estunderizados
+```
+## Ej 14
+
+Sustituimos el valor de x que queremos calcular en la recta de regresión.
+
+```{r}
+y_6_6 <- 95.37 - 1.087 * 6.6
+y_6_6
+```
+## Ej 15
+
+Utilizamos la librería dplyr. Los dos conjuntos de datos creados sirven, el primero para crear una recta de regresión y el segundo para comprobar su validez.
+
+```{r}
+library(dplyr)
+train <- data %>% dplyr::sample_frac(.8)
+test <- dplyr::anti_join(data, train)
+train
+test
+```
+## Ej 16
+
+Ajustamos nuevamente el modelo con el conjunto de “entrenamiento” creado en el ejercicio anterior, "train".
+
+```{r}
+modelo_2 <- lm(y_cuentas ~ x_distancia, train)
+summary(modelo_2)
+```
+## Ej 17
+
+Los asteríscos nos indican la fiabilidad del modelo. Tres asteríscos indican una posibilidad baja de que la relación generada entre variables sea debida al azar.Cuantos menos asteríscos mayor posibilidad de que se deba al azar. Por otro lado R^2 indica la relación entre los datos y la línea de regresión. Cuanto más se acerque R^2 a 1 más se acercan los datos a la línea. 
+
+## Ej 18
+
+El cálculo para los grados de libertad del modelo se ha obtenido mediante la función summary().
+
+## Ej 19
+
+El total de varianza explicada y no explicada por el modelo se encuentra con la función anova(), la cual aporta una tabla donde la columna 'Sum Sq' nos proporciona la varianza total explicada y no explicada. Vemos que la Varianza explicada (10818.7) es baja en comparación a la no explicada por lo que no podemos pensar que el modelo sea bueno para realizar predicciones.
+
+```{r}
+anova(modelo_2)
+```
+
+
+## Ej 20
+
+Utilizamos el error cuadrático medio. Es una operación de validación cruzada y ayuda a evaluar el rendimiento de un modelo de regresión lineal.  
+
+```{r}
+Predicci <- predict(modelo_2, newdata = test) 
+Predicci
+```
+```{r}
+E_cadr_medio <- sqrt(mean((test$y_cuentas - Predicci)^2))
+E_cadr_medio
+```
+
+## Ej 21
+
+Para comprobar si existen valores influyentes en nuestro modelo podemos usar el método de Cook, que mide la influencia de una observación en el ajuste del modelo, eliminando la observación y comparando el ajuste del modelo con y sin ella. Si el ajuste del modelo cambia significativamente, entonces la observación se considera influyente. Observamos un valor que descarrila, por lo que podemos considerarlo influyente.
+
+```{r}
+plot(modelo, which = 1)
+```
+
+## Ej 22
+
+Primero cargamos lmtest y realizamos el test de Durbin-Watson. Hay una fuerte autocorrelación positiva en los residuos del modelo, ya que el valor estadístico obtenido es menos de 1, por tanto no se puede asumir la independencia de los residuos.
+
+```{r}
+library(lmtest)
+dwtest(modelo, alternative = "two.sided")
+```
+## Ej 23
+
+El resultado podría indicar que los errores del modelo no son constantes y que es necesario ajustar el modelo de manera diferente.
+
+```{r}
+plot(x = modelo$fitted.values, y = modelo$residuals,
+     xlab = "Valores ajustados", ylab = "Residuos",
+     main = "Gráfico de residuos versus valores ajustados")
+abline(h = 0, col = "red")
+```
+
+
