@@ -105,3 +105,8 @@ plot(x = modelo$fitted.values, y = modelo$residuals,
      main = "Gráfico de residuos versus valores ajustados")
 abline(h = 0, col = "red")
 #esto podría indicar que los errores del modelo no son constantes y que es necesario ajustar el modelo de manera diferente.
+
+
+
+library(tinytex)
+tinytex::reinstall_tinytex(repository = "illinois")
