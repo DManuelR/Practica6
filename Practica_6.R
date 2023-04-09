@@ -38,9 +38,9 @@ sum_xy <- sum(tabla_datos$xy)
 sum_xy
 sum_xcuadrado <- sum(tabla_datos$x_cuadrado)
 sum_xcuadrado
+
 sum_total <- c(sum_y, sum_x, sum_xy, sum_xcuadrado)
 sum_total
-
 tabla_datos2 <- rbind(tabla_datos, sum_total)
 tabla_datos2
 rownames(tabla_datos2)[11] <- "sumatorio"
