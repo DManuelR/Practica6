@@ -2,7 +2,9 @@
 title: "Practica6"
 author: "David M. Villalobo"
 date: "2023-04-09"
-output: html_document
+output:
+  html_document: default
+  pdf_document: default
 ---
 
 ```{r setup, include=FALSE}
@@ -155,6 +157,7 @@ Utilizamos la librería dplyr. Los dos conjuntos de datos creados sirven, el pri
 
 ```{r}
 library(dplyr)
+data <- data.frame(x_distancia, y_cuentas)
 train <- data %>% dplyr::sample_frac(.8)
 test <- dplyr::anti_join(data, train)
 train
